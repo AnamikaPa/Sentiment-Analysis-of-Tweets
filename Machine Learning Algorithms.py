@@ -50,7 +50,6 @@ text.drop(text.columns[0],axis=1,inplace=True)
 
 np.seterr(divide='ignore', invalid='ignore')
 
-#print text
 
 """
 lexicon =[]
@@ -92,7 +91,6 @@ text["tfidf"] = a
 tfidf_data = TfidfVectorizer(use_idf=1,stop_words='english')
 tweet_data = tfidf_data.fit_transform(text['tweet'].values.astype('U')).toarray()
 
-print tweet_data.shape
 """
 integration = pd.DataFrame(text).to_csv('data/Feature_extracted.csv')
 """
@@ -418,7 +416,7 @@ print "\n"
 Print_Evaluation_parameters(ep)
 
 
-"""
+
 # ------------------------------------ Convolution Neural Network ----------------------------------------
 
 print "\n\n--------------- Convolutional Neural Network ----------------"
@@ -464,9 +462,8 @@ for i in range(0,len(y_pred)):
 accuracy_cnn, precision_cnn, f1score_cnn, recall_cnn, cohen_kappa_cnn, hamming_loss_cnn, jaccard_similarity_cnn, Confusion_matrix_cnn = Evaluation_parameters(y_test, Y_pred, "Convolution Neural Network")
 #accuracy_cnn = scores[1]
 ep = [accuracy_cnn, precision_cnn, f1score_cnn, recall_cnn, cohen_kappa_cnn, hamming_loss_cnn, jaccard_similarity_cnn, Time_cnn, Confusion_matrix_cnn]
-print "\n"
 Print_Evaluation_parameters(ep)
-"""
+
 
 # ------------------------------------ Dictionary Based ----------------------------------------
 
@@ -501,8 +498,6 @@ for i in range(0,len(text['tweet'])):
 Time_db = time.clock() - start
 
 
-#print "Accuracy : ",(float(correct)/len(text))
-
 print "\n\n--------------- Dictionary Based ----------------"
 
 accuracy_db, precision_db, f1score_db, recall_db, cohen_kappa_db, hamming_loss_db, jaccard_similarity_db, Confusion_matrix_db = Evaluation_parameters(text['senti'], y_pred, "Dictionary Based")
@@ -528,7 +523,6 @@ for i in range(0,len(sentiment)):
 			#print w, score
 			senti[w] = score
 
-#print senti
 
 y_pred = []
 correct = 0
@@ -550,7 +544,6 @@ for i in range(0,len(text['tweet'])):
 	
 Time_dbs = time.clock() - start
 
-#print "Accuracy : ",(float(correct)/len(text))
 
 print "\n\n--------------- Dictionary Based with Score ----------------"
 
